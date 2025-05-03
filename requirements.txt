@@ -1,0 +1,11 @@
+ffmpeg-python
+pysubs2
+audio-separator
+tiktok-voice # From https://github.com/mark-rez/TikTok-Voice-TTS (May require direct install: pip install git+https://github.com/mark-rez/TikTok-Voice-TTS)
+pydub
+tqdm         # Added dependency from tts_from_ass.py
+requests     # Added dependency from tiktok_voice library
+playsound    # Added dependency from tiktok_voice library
+# Add specific versions if known or required, e.g., ffmpeg-python==0.2.0
+# Note: audio-separator might require specific ML runtimes like onnxruntime.
+# Check its documentation for full installation instructions if needed.
