@@ -562,7 +562,7 @@ def combine_video_audio_mixed(video_file: str, *audio_files: str, out_dir: str =
 
 def main():
     # --- User Configuration ---
-    video_file = r"videos\[EMBER] Wajutsushi - 06.mkv" # Example video
+    video_file = "videos/video.mkv" # Example video
     clip_start_time_str = "09:35" # Example start time (mm:ss or hh:mm:ss.ms etc) - Corrected format
     clip_end_time_str = "10:30"   # Example end time - Corrected format
     base_output_folder = "clips/" # Base folder for all generated clips

@@ -1,19 +1,19 @@
 # Video Clip Processing Pipeline
 
-This project provides a Python script (`main.py`) to automate a video processing pipeline. It allows users to clip a section of a video, extract and edit its subtitles, generate Text-to-Speech (TTS) audio for the edited dialogue, separate background music from the original clip's audio, and finally combine the clipped video (without its original audio) with the generated TTS and background audio tracks.
+This project provides a Python script (`main.py`) to automate a video processing pipeline, specifically designed for **MKV video files containing embedded subtitle tracks**. It allows users to clip a section of a video, extract and edit its embedded subtitles, generate Text-to-Speech (TTS) audio for the edited dialogue, separate background music from the original clip's audio, and finally combine the clipped video (without its original audio) with the generated TTS and background audio tracks into a new MKV file, including the edited subtitles.
 
 ## Features
 
-*   **Video Clipping:** Extracts a specific time segment from a source video file.
-*   **Subtitle Extraction:** Extracts subtitle tracks from the source video (prioritizes English ASS/SRT).
+*   **Video Clipping:** Extracts a specific time segment from a source MKV file.
+*   **Subtitle Extraction:** Extracts embedded subtitle tracks from the source MKV video (prioritizes English ASS/SRT).
 *   **Subtitle Clipping:** Clips the extracted subtitles to match the video clip's duration and adjusts timestamps.
 *   **Subtitle Editing:** Facilitates manual editing of clipped subtitles via a temporary text file.
 *   **TTS Generation:** Generates TTS audio (MP3) from the edited ASS subtitles using character voices.
 *   **Audio Extraction:** Extracts the original audio from the clipped video segment.
 *   **Vocal Removal:** Separates vocals from the extracted audio to isolate background music/effects (using `audio-separator`).
 *   **Audio Mixing:** Combines the generated TTS audio and the background audio into a single track.
-*   **Final Video Combination:** Muxes the clipped video (video stream only) with the mixed audio track.
-*   **Subtitle Muxing:** Adds the edited subtitles back into the final video.
+*   **Final Video Combination:** Muxes the clipped video (video stream only) with the mixed audio track into a new MKV file.
+*   **Subtitle Muxing:** Adds the edited subtitles back into the final MKV video.
 
 ## Setup
 
@@ -30,7 +30,7 @@ This project provides a Python script (`main.py`) to automate a video processing
 ## Usage
 
 1.  **Configure `main.py`:**
-    *   Set the `video_file` variable to the path of your source video.
+    *   Set the `video_file` variable to the path of your source **MKV video with embedded subtitles**.
     *   Set `clip_start_time_str` and `clip_end_time_str` to define the desired clip segment (format: "MM:SS" or "HH:MM:SS.ms").
     *   Set `base_output_folder` to specify the directory where output subfolders will be created.
 2.  **Run the Script:**
@@ -40,7 +40,7 @@ This project provides a Python script (`main.py`) to automate a video processing
 3.  **Follow Prompts:**
     *   The script will pause for subtitle editing. Open the generated `.txt` file (e.g., `clips/your_video_name/subtitles_to_edit.txt`), make your changes, save the file, and press Enter in the console.
     *   The script will prompt you to map characters found in the subtitles to available TTS voices. Enter the corresponding index number for each character.
-4.  **Output:** The final processed video (with mixed audio and edited subtitles) will be saved in a uniquely named subfolder within your specified `base_output_folder`. Intermediate files (clipped video, audio tracks, subtitles) are also kept in this folder.
+4.  **Output:** The final processed video (as an MKV file with mixed audio and edited subtitles) will be saved in a uniquely named subfolder within your specified `base_output_folder`. Intermediate files (clipped video, audio tracks, subtitles) are also kept in this folder.
 
 ## Core Libraries
 
